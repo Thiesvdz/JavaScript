@@ -1,0 +1,29 @@
+<html>
+    <head></head>
+    <body>
+        <label for="Health">Health bar:</label>
+        <meter
+            id="Health"
+            min="0" max="100"
+            low="33" high="66" optimum="80"
+            value="100">
+            at 100/100
+        </meter>
+            
+        <input id="button" type="button" value="HIT!"></input>
+        <h1 id="hpStatus">Je leeft</h1>
+        
+        <script>
+            document.getElementById("button").addEventListener("click",(e)=>{
+                let healthmeter = document.getElementById("Health")
+                healthmeter.value -=10
+                if (healthmeter.value == 0) {
+                document.getElementById("hpStatus").innerHTML = "dood"
+                } 
+                //Hier code om de meter leeg te maken
+                //Haal via het DOM de elementen binnen
+            
+            });       
+        </script>
+    </body>
+</html>
