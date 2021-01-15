@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="knop">
+        <p>
+            Pay 5$
+        </p>
+    </button>
+    <p id="money">Money: 100</p>
+    <p id="time">Time:</p>
+    <img id="gordijn" src="../rood-gordijn-theater.jpg" alt="" height="600px" width="1500px" >
+    <script>
+        let moneyleft = 100;
+        let timeleft = 0;
+        let button = document.getElementById('knop');
+        button.addEventListener('click', ()=>{start()});
+        function start()
+        {
+            if (moneyleft == 0) 
+            {
+            document.getElementById('money').innerHTML = 0
+            }
+            else
+            {
+                moneyleft -= 5;
+                timeleft += 5000;
+            }
+                
+            let moneyui = document.getElementById('money');
+            moneyui.innerHTML = "Money: " + moneyleft;
+
+        }
+        function checktime()
+        {   
+            let image = document.getElementById('gordijn');
+            if(timeleft > 0){
+            timeleft -= 100;
+            image.src="../konijn.jpg"; 
+            }else{ 
+                image.src="../rood-gordijn-theater.jpg"
+                timeleft = 0
+            }
+            let timeui = document.getElementById('time');
+            timeui.innerHTML = "Time: " + timeleft;
+        }
+        setInterval(checktime, 100);
+    </script>
+</body>
+</html>
