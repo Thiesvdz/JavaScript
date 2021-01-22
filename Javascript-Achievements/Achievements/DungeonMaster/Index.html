@@ -6,23 +6,31 @@
     <title>Dungeon Master</title>
 </head>
 <body>
-    <button id="button">
-        Klik hier!
-    </button>
-    <Script>
-        let button = document.getElementById("button")
-        button.addEventListener("click", rollingForStats());
+    <button id="button">Klik hier!</button>
+    <p id="Test">test tijdelijk</p>
+</body>
+<Script>
+    let button = document.getElementById("button")
+    button.addEventListener("click", function(){rollingForStats()});
         
-        function rollingForStats()
-        {
+    function rollingForStats()
+    {
+       
         let array1 = Math.floor(Math.random() * 5) + 1;
         let array2 = Math.floor(Math.random() * 5) + 1;
         let array3 = Math.floor(Math.random() * 5) + 1;
         let array4 = Math.floor(Math.random() * 5) + 1;
         let array = [array1,array2,array3,array4]
-        array.pop()
-        console.log(array)
+        array.sort();
+        array.shift();
+        let opTel = 0;
+        for(let i = 0; i < array.length; i++){
+            opTel += array[i]
         }
-    </Script>
-</body>
+        Test.innerHTML = opTel;
+        console.log(opTel);
+        console.log(array);
+    }
+</Script>
+
 </html>
