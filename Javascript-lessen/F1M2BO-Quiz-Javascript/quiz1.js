@@ -10,7 +10,7 @@ const quiz1 =
     "quizContent":		
 		[
 			{
-				"question": "Welke monke heett veel swag?",
+				"question": "Welke monke heeft veel swag?",
 				"answers": [{
 						"answer": "Jerome",
 						"feedback": true

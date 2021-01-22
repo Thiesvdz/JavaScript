@@ -5,23 +5,34 @@ const quizWrapper = document.getElementById('quizWrapper');
 const questionBox = document.getElementById('questionBox');
 const resultBox = document.getElementById('resultBox');
 const quizTitle = document.getElementById('quizTitle');
+var reset1 = document.getElementById('restart1')
 
 let counter = 0; // aantal mutliple choice vragen
 let quiz; // object met quiz vragen
-let quiz20
 let playerData = {}; // object, hierin worden de game gegevens opgeslagen
+let quizNummer = 1; // voorbereiden automatisch 2e quiz startem
+let check = 0;
+let rand = 0;
 
 function init(){
-    quiz = quiz1; // kies de quiz
-    quiz20 = quiz2; // kies de quiz
-    initQuiz(); // start de quiz
+  quiz = quiz1; // kies de quiz
+  if(check == 1){
+    quiz = quiz2;
+  } else{
+    rand = 1;
+  }
+  initQuiz(); // start de quiz
 }
 
 function initQuiz(){
+  questionBox.style.display = "block"; // reset alle player game variabelen
+  resultBox.style.display = "none"; // reset alle player game variabelen
+  counter = 0; // reset alle player game variabelen
   playerData.goodAnswers = 0; // reset alle player game variabelen
   playerData.wrongAnswers = 0; // reset alle player game variabelen
   playerName = ""; // toekomstige uitbreiding naam speler opvragen
   resultBox.style.display = "none"; // verberg de resultbox
+  reset1.style.display = "none"; // verberg de resultbox
   quizTitle.innerHTML=quiz.quizMetaData.title; // laat titel van quiz zien
   prepareQuestions(); // start de quiz
 }
@@ -79,8 +90,14 @@ function finishQuiz() {
   // afsluiting quiz geef feedback
   questionBox.style.display = "none";
   resultBox.style.display = "block";
+  reset1.style.display = "block";
   quizWrapper.style.background = "silver";
-  resultBox.innerHTML = "<h1>Bedankt voor het spelen van de monke quiz!<h1><h2>Jouw resultaat. <br>goede antwoorden: " + playerData.goodAnswers + "<br>foute antwoorden: " + playerData.wrongAnswers + "</h2>";
+  resultBox.innerHTML = "<h2>Jouw resultaat <br>goede antwoorden " + playerData.goodAnswers + "<br>foute antwoorden " + playerData.wrongAnswers + "</h2>";
+}
+
+reset1.onclick = function(){
+  check += 1;
+  init();
 }
 
 init(); // start it
